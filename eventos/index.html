@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso Técnico em Desenvolvimento de Sistemas - IFSC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #00796b;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+    h1 {
+      color: #4CAF50;
+    }
+    p {
+      font-size: 18px;
+    }
+    a {
+      color: #008CBA;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .course-image {
+      display: block;
+      margin: 0 auto;
+      width: 400px;
+      border-radius: 10px;
+    }
+    form {
+      margin-top: 20px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    footer {
+      background-color: #00796b;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+    /* Estilo para a mensagem de agradecimento */
+    #thankYouMessage {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #dff0d8;
+      border: 1px solid #d6e9c6;
+      border-radius: 8px;
+      color: #3c763d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Curso Técnico em Desenvolvimento de Sistemas</h1>
+    <p>IFSC - Campus Florianópolis</p>
+  </header>
+
+  <h2>Desenvolvimento para Dispositivos Móveis</h2>
+  <p>Se você tem interesse em aprender a criar aplicativos e sistemas para dispositivos móveis, este curso é para você!</p>
+  <p>No curso técnico de Desenvolvimento de Sistemas do <strong>IFSC - Campus Florianópolis</strong>, oferecemos disciplinas como <strong>Desenvolvimento para Dispositivos Móveis</strong>, onde você aprenderá a construir aplicações modernas utilizando tecnologias web, como HTML5, CSS3, e JavaScript.</p>
+
+  <h2>O que você vai aprender:</h2>
+  <ul>
+    <li>Desenvolvimento Mobile First</li>
+    <li>Responsividade com CSS</li>
+    <li>Utilização de frameworks como Bootstrap</li>
+    <li>Desenvolvimento de Progressive Web Apps (PWA)</li>
+  </ul>
+
+  <h2>Formulário de Interesse</h2>
+  <p>Preencha o formulário abaixo para receber mais informações sobre o curso:</p>
+
+  <form id="interestForm" action="/enviar" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem ou perguntas sobre o curso."></textarea>
+
+    <input type="submit" value="Enviar Interesse">
+  </form>
+
+  <!-- Elemento para exibir a mensagem de agradecimento -->
+  <div id="thankYouMessage">
+    <h3>Obrigado pelo seu interesse!</h3>
+    <p>Recebemos sua mensagem e entraremos em contato em breve.</p>
+  </div>
+
+  <h2>Venha estudar conosco!</h2>
+  <p>Para mais informações, visite nosso site oficial:</p>
+  <p><a href="https://www.ifsc.edu.br/florianopolis" target="_blank">Acesse o site do IFSC - Campus Florianópolis</a></p>
+
+  <img class="course-image" src="https://ifsc.edu.br/image/layout_set_logo?img_id=1055822&t=1727255679023" alt="Imagem de promoção do curso no IFSC" style="max-width: 100%; height: auto;">
+
+  <footer>
+    <p>&copy; 2024 IFSC - Instituto Federal de Santa Catarina. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Script JavaScript para manipulação do DOM -->
+  <script>
+    // Seleciona o formulário e a mensagem de agradecimento
+    const form = document.getElementById('interestForm');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    // Adiciona um listener para o evento de submissão do formulário
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Previna o envio padrão do formulário
+
+      // Opcional: Aqui você pode adicionar código para enviar os dados via                //AJAX
+
+      // Esconde o formulário
+      form.style.display = 'none';
+
+      // Exibe a mensagem de agradecimento
+      thankYouMessage.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

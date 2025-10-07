@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo Flexbox - Barra de Navegação</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #004080;
+      color: #fff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Permite quebra para novas linhas */
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #0066cc;
+    }
+
+    /* Menu Mobile */
+    .menu-toggle {
+      display: none;
+      background-color: #0066cc;
+      color: #fff;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #004080;
+      }
+
+      nav a {
+        padding: 12px 20px;
+        border-top: 1px solid #0066cc;
+      }
+
+      .menu-toggle {
+        display: block;
+        align-self: flex-end; /* Alinha o botão à direita */
+        margin-bottom: 10px; /* Espaçamento abaixo do botão */
+        width: auto; /* Largura ajustada ao conteúdo */
+      }
+
+      .nav-open {
+        display: flex;
+      }
+    }
+  </style>
+  <script>
+    function toggleNav() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('nav-open');
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">IFSC Florianópolis</div>
+    <button class="menu-toggle" onclick="toggleNav()">Menu</button>
+    <nav id="nav-menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#curriculo">Currículo</a>
+      <a href="#inscricao">Inscreva-se</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+</body>
+</html>

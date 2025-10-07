@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="UTF-8">
+ <title>Curso de Desenvolvimento de Sistemas - IFSC Florianópolis</title>
+ <style>
+    * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+
+   header {
+ background-color: #004080;
+ color: #fff;
+ padding: 15px 20px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-wrap: wrap;
+ position: sticky; /* Fixa o cabeçalho no topo */
+ top: 0; /* Posiciona o cabeçalho no topo */
+ z-index: 1000; /* Garante que ele fique acima de outros elementos */
+}
+
+body {
+ font-family: Arial, sans-serif;
+ background-color: #f0f0f0;
+ line-height: 1.6;
+}
+
+section {
+ padding: 20px; /* Espaçamento interno das seções */
+ scroll-margin-top: 60px; /* Garante que a rolagem pare abaixo do cabeçalho */
+}
+
+   .logo {
+     font-size: 1.8em;
+     font-weight: bold;
+   }
+
+   nav {
+     display: flex;
+     gap: 20px;
+   }
+
+   nav a {
+     color: #fff;
+     text-decoration: none;
+     padding: 8px 12px;
+     border-radius: 4px;
+     transition: background-color 0.3s;
+   }
+
+   nav a:hover {
+     background-color: #0066cc;
+   }
+
+   .menu-toggle {
+     display: none;
+     background-color: #0066cc;
+     color: #fff;
+     padding: 8px 12px;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     font-size: 1em;
+     margin-bottom: 10px;
+     width: auto;
+   }
+
+   @media (max-width: 768px) {
+     nav {
+       display: none;
+       flex-direction: column;
+       width: 100%;
+       background-color: #004080;
+     }
+
+     nav a {
+       padding: 12px 20px;
+       border-top: 1px solid #0066cc;
+     }
+
+     .menu-toggle {
+       display: block;
+       margin-left: auto;
+     }
+
+     .nav-open {
+       display: flex;
+     }
+   }
+
+
+/* Media query para dispositivos menores */
+@media (max-width: 768px) {
+ header {
+   flex-wrap: wrap; /* Permite que os elementos quebrem para novas linhas */
+ }
+
+ nav {
+   display: none;
+   flex-direction: column; /* Coloca os itens em uma coluna */
+   width: 100%;
+   background-color: #004080;
+ }
+
+ nav a {
+   padding: 12px 20px;
+   border-top: 1px solid #0066cc;
+ }
+
+ .menu-toggle {
+   display: block; /* Torna o botão visível */
+   width: auto; /* Ajusta a largura ao conteúdo */
+   margin-left: auto; /* Alinha o botão à direita */
+ }
+
+ .nav-open {
+   display: flex;
+   flex-direction: column; /* Garante que os itens do menu fiquem em coluna */
+ }
+}
+
+
+   /* Seção Hero */
+   .hero {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 60vh;
+     background: url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
+     color: #fff;
+     text-align: center;
+     position: relative;
+   }
+
+   .hero::after {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.5);
+   }
+
+   .hero-content {
+     position: relative;
+     z-index: 1;
+     max-width: 800px;
+     padding: 20px;
+   }
+
+   .hero h1 {
+     font-size: 3em;
+     margin-bottom: 20px;
+   }
+
+   .hero p {
+     font-size: 1.2em;
+     margin-bottom: 30px;
+   }
+
+   .hero a {
+     background-color: #0066cc;
+     color: #fff;
+     padding: 12px 25px;
+     text-decoration: none;
+     border-radius: 5px;
+     font-size: 1em;
+     transition: background-color 0.3s;
+   }
+
+   .hero a:hover {
+     background-color: #005bb5;
+   }
+
+   /* Seção Sobre o Curso */
+   .sobre-container {
+     padding: 40px 20px;
+     background-color: #fff;
+     text-align: center;
+   }
+
+   .sobre-container h2 {
+     font-size: 2em;
+     margin-bottom: 20px;
+     color: #004080;
+   }
+
+   .sobre-container p {
+     max-width: 800px;
+     margin: 0 auto;
+     font-size: 1.1em;
+     color: #333;
+   }
+
+   /* Grade Curricular */
+   .grade-container {
+     padding: 40px 20px;
+     background-color: #f9f9f9;
+   }
+
+   .grade-container h2 {
+     font-size: 2em;
+     margin-bottom: 20px;
+     text-align: center;
+     color: #004080;
+   }
+
+   .cards-container {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 20px;
+     justify-content: center;
+   }
+
+   .card {
+     flex: 1 1 calc(100% - 40px);
+     background-color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+     transition: transform 0.3s;
+     max-width: 300px;
+   }
+
+   .card:hover {
+     transform: translateY(-5px);
+   }
+
+   .card h3 {
+     margin-bottom: 10px;
+     color: #004080;
+   }
+
+   .card p {
+     color: #555;
+     font-size: 0.95em;
+   }
+
+   @media (min-width: 600px) {
+     .card {
+       flex: 1 1 calc(50% - 40px);
+     }
+   }
+
+   @media (min-width: 900px) {
+     .card {
+       flex: 1 1 calc(33.333% - 40px);
+     }
+   }
+
+   /* Benefícios */
+   .beneficios-container {
+     padding: 40px 20px;
+     background-color: #fff;
+     text-align: center;
+   }
+
+   .beneficios-container h2 {
+     font-size: 2em;
+     margin-bottom: 20px;
+     color: #004080;
+   }
+
+   .beneficios-container .beneficios {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 20px;
+     justify-content: center;
+   }
+
+   .beneficio {
+     flex: 1 1 calc(100% - 40px);
+     background-color: #f0f0f0;
+     padding: 20px;
+     border-radius: 5px;
+     max-width: 300px;
+   }
+
+   .beneficio h3 {
+     margin-bottom: 10px;
+     color: #004080;
+   }
+
+   .beneficio p {
+     color: #555;
+     font-size: 0.95em;
+   }
+
+   @media (min-width: 600px) {
+     .beneficio {
+       flex: 1 1 calc(50% - 40px);
+     }
+   }
+
+   @media (min-width: 900px) {
+     .beneficio {
+       flex: 1 1 calc(33.333% - 40px);
+     }
+   }
+
+   /* Depoimentos */
+   .depoimentos-container {
+     padding: 40px 20px;
+     background-color: #f9f9f9;
+     text-align: center;
+   }
+
+   .depoimentos-container h2 {
+     font-size: 2em;
+     margin-bottom: 20px;
+     color: #004080;
+   }
+
+   .depoimentos {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 20px;
+     justify-content: center;
+   }
+
+   .depoimento {
+     flex: 1 1 calc(100% - 40px);
+     background-color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+     max-width: 400px;
+   }
+
+   .depoimento p {
+     font-style: italic;
+     color: #555;
+     margin-bottom: 15px;
+   }
+
+   .depoimento .autor {
+     font-weight: bold;
+     color: #004080;
+   }
+
+   @media (min-width: 600px) {
+     .depoimento {
+       flex: 1 1 calc(50% - 40px);
+     }
+   }
+
+   /* Seção de Inscrição */
+   .inscricao-container {
+     padding: 40px 20px;
+     background-color: #fff;
+     text-align: center;
+   }
+
+   .inscricao-container h2 {
+     font-size: 2em;
+     margin-bottom: 20px;
+     color: #004080;
+   }
+
+   .inscricao-container p {
+     max-width: 800px;
+     margin: 0 auto 30px auto;
+     font-size: 1.1em;
+     color: #333;
+   }
+
+   .inscricao-container a {
+     background-color: #0066cc;
+     color: #fff;
+     padding: 15px 30px;
+     text-decoration: none;
+     border-radius: 5px;
+     font-size: 1.1em;
+     transition: background-color 0.3s;
+   }
+
+   .inscricao-container a:hover {
+     background-color: #005bb5;
+   }
+
+   /* Rodapé */
+   footer {
+     background-color: #004080;
+     color: #fff;
+     text-align: center;
+     padding: 20px;
+     position: relative;
+     /* Removido fixed para evitar sobreposição */
+   }
+
+   footer a {
+     color: #fff;
+     text-decoration: underline;
+   }
+ </style>
+
+ <script>
+   function toggleNav() {
+     const nav = document.getElementById('nav-menu');
+     nav.classList.toggle('nav-open');
+   }
+
+   function closeNavOnLinkClick() {
+     const navLinks = document.querySelectorAll('#nav-menu a');
+     const nav = document.getElementById('nav-menu');
+
+     navLinks.forEach(link => {
+       link.addEventListener('click', () => {
+         nav.classList.remove('nav-open'); // Recolhe o menu ao clicar em um link
+       });
+     });
+   }
+
+   // Garante que os eventos sejam registrados após o carregamento do DOM
+   document.addEventListener('DOMContentLoaded', closeNavOnLinkClick);
+ </script>
+</head>
+<body>
+
+   <header>
+       <div class="logo">IFSC Florianópolis</div>
+       <button class="menu-toggle" onclick="toggleNav()">Menu</button>
+       <nav id="nav-menu">
+         <a href="#hero">Início</a>
+         <a href="#sobre">Sobre o Curso</a>
+         <a href="#grade">Grade Curricular</a>
+         <a href="#beneficios">Benefícios</a>
+         <a href="#depoimentos">Depoimentos</a>
+         <a href="#inscricao">Inscreva-se</a>
+       </nav>
+   </header>
+  
+
+ <!-- Seção Hero -->
+ <section id="hero" class="hero">
+   <div class="hero-content">
+     <h1>Curso de Desenvolvimento de Sistemas</h1>
+     <p>Prepare-se para o mercado de trabalho com uma formação completa e atualizada no IFSC Campus Florianópolis.</p>
+     <a href="#inscricao">Inscreva-se Agora</a>
+   </div>
+ </section>
+
+ <!-- Seção Sobre o Curso -->
+ <section id="sobre" class="sobre-container">
+   <h2>Sobre o Curso</h2>
+   <p>O Curso de Desenvolvimento de Sistemas do IFSC Campus Florianópolis oferece uma formação abrangente, combinando teoria e prática para capacitar os estudantes a desenvolver soluções inovadoras em tecnologia da informação. Com professores altamente qualificados e infraestrutura moderna, o curso prepara os alunos para enfrentar os desafios do mercado e contribuir significativamente para a indústria de tecnologia.</p>
+ </section>
+
+ <!-- Grade Curricular -->
+ <section id="grade" class="grade-container">
+   <h2>Grade Curricular</h2>
+   <div class="cards-container">
+     <div class="card">
+       <h3>Programação Web</h3>
+       <p>Aprenda a desenvolver aplicações web dinâmicas utilizando as mais recentes tecnologias e frameworks.</p>
+     </div>
+     <div class="card">
+       <h3>Banco de Dados</h3>
+       <p>Entenda o design, implementação e manutenção de bancos de dados eficientes e seguros.</p>
+     </div>
+     <div class="card">
+       <h3>Desenvolvimento Mobile</h3>
+       <p>Crie aplicativos para dispositivos móveis, explorando as melhores práticas de design e usabilidade.</p>
+     </div>
+     <div class="card">
+       <h3>Engenharia de Software</h3>
+       <p>Adquira conhecimentos sobre processos de desenvolvimento, metodologias ágeis e gestão de projetos.</p>
+     </div>
+     <div class="card">
+       <h3>Inteligência Artificial</h3>
+       <p>Explore os fundamentos e aplicações da inteligência artificial e aprendizado de máquina.</p>
+     </div>
+     <div class="card">
+       <h3>Segurança da Informação</h3>
+       <p>Aprenda a proteger sistemas e dados contra ameaças e vulnerabilidades.</p>
+     </div>
+   </div>
+ </section>
+
+ <!-- Benefícios -->
+ <section id="beneficios" class="beneficios-container">
+   <h2>Benefícios do Curso</h2>
+   <div class="beneficios">
+     <div class="beneficio">
+       <h3>Infraestrutura Moderna</h3>
+       <p>Laboratórios equipados com tecnologia de ponta para um aprendizado prático e eficiente.</p>
+     </div>
+     <div class="beneficio">
+       <h3>Corpo Docente Qualificado</h3>
+       <p>Professores com vasta experiência no mercado de trabalho e em pesquisa acadêmica.</p>
+     </div>
+     <div class="beneficio">
+       <h3>Parcerias com Empresas</h3>
+       <p>Oportunidades de estágio e networking com empresas líderes do setor de tecnologia.</p>
+     </div>
+     <div class="beneficio">
+       <h3>Projetos Práticos</h3>
+       <p>Desenvolvimento de projetos reais que permitem aplicar os conhecimentos adquiridos.</p>
+     </div>
+     <div class="beneficio">
+       <h3>Certificação</h3>
+       <p>Certificados reconhecidos que valorizam seu currículo no mercado de trabalho.</p>
+     </div>
+     <div class="beneficio">
+       <h3>Ambiente Colaborativo</h3>
+       <p>Espaços e atividades que incentivam a colaboração e o trabalho em equipe.</p>
+     </div>
+   </div>
+ </section>
+
+ <!-- Depoimentos -->
+ <section id="depoimentos" class="depoimentos-container">
+   <h2>Depoimentos</h2>
+   <div class="depoimentos">
+     <div class="depoimento">
+       <p>"O curso de Desenvolvimento de Sistemas no IFSC me proporcionou as habilidades necessárias para iniciar minha carreira na área de TI. A qualidade dos professores e a infraestrutura são excelentes."</p>
+       <div class="autor">- João Silva, Ex-Aluno</div>
+     </div>
+     <div class="depoimento">
+       <p>"As parcerias com empresas me permitiram realizar estágios que foram fundamentais para meu desenvolvimento profissional. Recomendo a todos que buscam uma formação sólida."</p>
+       <div class="autor">- Maria Oliveira, Aluna Atual</div>
+     </div>
+     <div class="depoimento">
+       <p>"Os projetos práticos realizados durante o curso me deram confiança para desenvolver minhas próprias aplicações e contribuir para projetos inovadores."</p>
+       <div class="autor">- Pedro Santos, Ex-Aluno</div>
+     </div>
+     <div class="depoimento">
+       <p>"A abordagem prática do curso, aliada ao conhecimento teórico, me preparou para enfrentar os desafios do mercado de trabalho com competência."</p>
+       <div class="autor">- Ana Paula, Aluna Atual</div>
+     </div>
+   </div>
+ </section>
+
+ <!-- Seção de Inscrição -->
+ <section id="inscricao" class="inscricao-container">
+   <h2>Inscreva-se Agora</h2>
+   <p>Não perca a oportunidade de transformar sua carreira com o Curso de Desenvolvimento de Sistemas do IFSC Campus Florianópolis. As vagas são limitadas!</p>
+   <a href="https://www.ifsc.edu.br/inscricao" target="_blank">Faça sua Inscrição</a>
+ </section>
+
+ <!-- Rodapé -->
+ <footer>
+   <p>Entre em contato: <a href="mailto:contato@ifsc.edu.br">contato@ifsc.edu.br</a> | Telefone: (48) 3341-XXXX</p>
+   <p>&copy; 2024 IFSC Florianópolis. Todos os direitos reservados.</p>
+ </footer>
+
+</body>
+</html>
